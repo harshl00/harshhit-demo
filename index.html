@@ -1,251 +1,528 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoReclaim Tech - Innovating E-Waste Management</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Load Google Fonts: Playfair Display (Serif) and Raleway (Sans) -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>EcoReclaim Tech | The Future of Circular Electronics</title>
     
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary-green': '#52796f',     // Sage Green (Main brand color)
-                        'secondary-gold': '#d4a373',    // Earth Gold (Accent)
-                        'text-dark': '#2f3e46',         // Dark Slate
-                        'background-light': '#f4f1ea',  // Warm Cream
-                        'detail-gray': '#e0dfdc',
+                        brand: {
+                            dark: '#1a2e28',   // Deep Forest
+                            primary: '#2d6a4f', // Emerald
+                            light: '#52b788',   // Fresh Leaf
+                            gold: '#d4a373',    // Earth Gold
+                            bg: '#f8f9fa',      // Off White
+                        }
                     },
                     fontFamily: {
-                        display: ['Playfair Display', 'serif'],
-                        sans: ['Raleway', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
                     },
+                    backgroundImage: {
+                        'hero-pattern': "url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop')",
+                        'circuit-pattern': "url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop')",
+                    }
                 }
             }
         }
     </script>
 
     <style>
-        /* Base styles for body and main content */
+        /* Custom Styles & Utilities */
         body {
-            font-family: 'Raleway', sans-serif;
-            background-color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
         }
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: #2f3e46;
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-dark {
+            background: rgba(26, 46, 40, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animation Utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d6a4f;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1a2e28;
+        }
+
+        /* Logo Animation */
+        .logo-spin:hover path {
+            animation: pulse-green 2s infinite;
+        }
+        
+        @keyframes pulse-green {
+            0% { stroke: #52b788; }
+            50% { stroke: #d4a373; }
+            100% { stroke: #52b788; }
         }
     </style>
 </head>
+<body class="bg-brand-bg text-gray-800 antialiased selection:bg-brand-gold selection:text-white">
 
-<body class="text-text-dark">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2 group">
+                    <svg class="w-10 h-10 logo-spin transition-transform transform group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C28 10 10 28 10 50 C10 72 28 90 50 90 C72 90 90 72 90 50" stroke="#2d6a4f" stroke-width="6" stroke-linecap="round" stroke-dasharray="150 200" transform="rotate(-45 50 50)"/>
+                        <path d="M50 25 C50 25 70 30 75 50 C80 70 50 85 50 85 C50 85 20 70 25 50 C30 30 50 25 50 25 Z" fill="#52b788"/>
+                        <path d="M50 85 L50 60" stroke="#fff" stroke-width="2"/>
+                        <path d="M50 60 L60 50" stroke="#fff" stroke-width="2"/>
+                        <circle cx="85" cy="25" r="5" fill="#d4a373"/>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-display font-bold text-brand-dark leading-none">EcoReclaim</span>
+                        <span class="text-xs font-body tracking-widest text-brand-gold font-semibold">TECH</span>
+                    </div>
+                </a>
 
-    <!-- Header / Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#home" class="flex items-center space-x-3">
-                <!-- Custom SVG Logo for EcoReclaim Tech -->
-                <svg class="w-10 h-10" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Outer Ring (Recycle Concept) -->
-                    <path d="M50 10 C28 10 10 28 10 50 C10 72 28 90 50 90 C72 90 90 72 90 50" stroke="#52796f" stroke-width="6" stroke-linecap="round" stroke-dasharray="150 200" transform="rotate(-45 50 50)"/>
-                    <!-- Leaf Shape -->
-                    <path d="M50 25 C50 25 70 30 75 50 C80 70 50 85 50 85 C50 85 20 70 25 50 C30 30 50 25 50 25 Z" fill="#84a98c"/>
-                    <!-- Circuit Lines inside Leaf -->
-                    <path d="M50 85 L50 60" stroke="#fff" stroke-width="2"/>
-                    <path d="M50 60 L60 50" stroke="#fff" stroke-width="2"/>
-                    <path d="M50 60 L40 50" stroke="#fff" stroke-width="2"/>
-                    <circle cx="60" cy="50" r="3" fill="#fff"/>
-                    <circle cx="40" cy="50" r="3" fill="#fff"/>
-                    <!-- Accent Dot (Tech) -->
-                    <circle cx="85" cy="25" r="5" fill="#d4a373"/>
-                </svg>
-                <span class="text-2xl font-display font-bold text-primary-green">EcoReclaim Tech</span>
-            </a>
-            <!-- Navigation Links (Hidden on small screens) -->
-            <nav class="hidden md:flex space-x-8 text-lg font-sans font-medium">
-                <a href="#problem" class="hover:text-primary-green transition duration-300">The Challenge</a>
-                <a href="#process" class="hover:text-primary-green transition duration-300">How It Works</a>
-                <a href="#solutions" class="hover:text-primary-green transition duration-300">Solutions</a>
-                <a href="#contact" class="px-4 py-2 bg-secondary-gold text-white rounded-full hover:bg-opacity-90 transition duration-300">Get Quote</a>
-            </nav>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#problem" class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">The Challenge</a>
+                    <a href="#process" class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">How It Works</a>
+                    <a href="#solutions" class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">Solutions</a>
+                    <a href="#impact" class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">Impact</a>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="px-6 py-2 bg-brand-dark text-white rounded-full text-sm font-bold hover:bg-brand-primary transition duration-300 shadow-lg transform hover:-translate-y-0.5">
+                        Get Quote
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-brand-dark focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full px-4">
+            <div class="glass rounded-xl p-4 flex flex-col space-y-4 shadow-2xl">
+                <a href="#problem" class="text-lg font-semibold text-gray-700">The Challenge</a>
+                <a href="#process" class="text-lg font-semibold text-gray-700">How It Works</a>
+                <a href="#solutions" class="text-lg font-semibold text-gray-700">Solutions</a>
+                <a href="#contact" class="px-4 py-3 bg-brand-primary text-white text-center rounded-lg font-bold">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Technology Circuit Board" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/80 to-brand-primary/40"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="md:w-2/3 reveal active">
+                <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-brand-gold/50 rounded-full px-4 py-1 mb-6">
+                    <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+                    <span class="text-brand-gold text-sm font-semibold uppercase tracking-wider">Sustainable Innovation</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-display font-extrabold text-white leading-tight mb-6">
+                    Turning <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-brand-gold">E-Waste</span> Into Wealth.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-light">
+                    We bridge the gap between discarded technology and essential resource recovery. Secure, profitable, and planet-first.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#process" class="px-8 py-4 bg-brand-light text-brand-dark rounded-full font-bold hover:bg-white transition duration-300 shadow-xl text-center">
+                        Start Reclaiming
+                    </a>
+                    <a href="#impact" class="px-8 py-4 border border-white text-white rounded-full font-bold hover:bg-white hover:text-brand-dark transition duration-300 text-center">
+                        View Our Impact
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
+            <i class="fa-solid fa-chevron-down text-2xl"></i>
         </div>
     </header>
 
-    <!-- 1. Hero Section (Title Slide Content) -->
-    <section id="home" class="bg-background-light py-20 md:py-32 border-b-8 border-secondary-gold/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="font-display text-6xl md:text-8xl font-bold mb-4 leading-tight">
-                EcoReclaim Tech
-            </h1>
-            <p class="text-xl md:text-3xl font-sans italic text-primary-green font-medium mb-10">
-                Innovating the Future of E-Waste Management
-            </p>
-            <a href="#process" class="inline-block px-10 py-4 text-xl font-bold text-white bg-primary-green rounded-full shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
-                Start Reclaiming Today
-            </a>
+    <!-- Stats Banner -->
+    <div class="bg-brand-primary py-8 relative z-20 -mt-8 mx-4 md:mx-12 rounded-xl shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            <div class="reveal">
+                <div class="text-3xl md:text-4xl font-bold font-display">50K+</div>
+                <div class="text-xs uppercase tracking-widest opacity-80">Devices Saved</div>
+            </div>
+            <div class="reveal">
+                <div class="text-3xl md:text-4xl font-bold font-display">$2M+</div>
+                <div class="text-xs uppercase tracking-widest opacity-80">Paid to Clients</div>
+            </div>
+            <div class="reveal">
+                <div class="text-3xl md:text-4xl font-bold font-display">99%</div>
+                <div class="text-xs uppercase tracking-widest opacity-80">Recovery Rate</div>
+            </div>
+            <div class="reveal">
+                <div class="text-3xl md:text-4xl font-bold font-display">0%</div>
+                <div class="text-xs uppercase tracking-widest opacity-80">Landfill Waste</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="py-24 bg-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-light/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h4 class="text-brand-gold font-bold uppercase tracking-widest mb-2">The Global Crisis</h4>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-dark mb-6">The Silent Threat in Our Landfills</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Every year, millions of tons of electronics are discarded improperly. This "e-waste" releases toxic chemicals like <strong class="text-red-500">mercury, lead, and cadmium</strong> into our soil and water.
+                    </p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        But it's not just poison—it's wasted value. We are burying billions of dollars in precious metals while mining the earth for more.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-brand-dark font-medium">
+                            <i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-4"></i> Soil Contamination
+                        </li>
+                        <li class="flex items-center text-brand-dark font-medium">
+                            <i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-4"></i> Groundwater Pollution
+                        </li>
+                        <li class="flex items-center text-brand-dark font-medium">
+                            <i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-4"></i> Loss of Finite Resources
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative reveal group">
+                    <div class="absolute inset-0 bg-brand-gold rounded-2xl transform rotate-3 transition group-hover:rotate-6"></div>
+                    <img src="https://images.unsplash.com/photo-1612965607446-25e1332775ae?q=80&w=2070&auto=format&fit=crop" alt="E-Waste Pile" class="relative rounded-2xl shadow-2xl grayscale transition duration-500 group-hover:grayscale-0 w-full object-cover h-[500px]">
+                    
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl max-w-xs border-l-4 border-red-500 hidden md:block">
+                        <p class="font-bold text-brand-dark text-lg">53.6 Million Tons</p>
+                        <p class="text-sm text-gray-500">of e-waste generated globally last year alone.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 2. The Problem Section (Slide 2 Content) -->
-    <section id="problem" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="order-2 md:order-1">
-                <h3 class="text-lg uppercase text-secondary-gold font-bold mb-2 tracking-widest">The Global Challenge</h3>
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">The Toxic Legacy of E-Waste</h2>
-                <p class="mb-6 text-lg">Millions of tons of electronic waste are discarded annually, ending up in landfills. This isn't just waste; it's a hazard to the planet.</p>
-                <p class="mb-6 text-lg font-semibold text-red-700/80">
-                    Lead, Mercury, Cadmium. These toxins leach into our soil and groundwater, threatening ecosystems and public health.
-                </p>
-                <a href="#impact" class="text-primary-green font-semibold hover:underline">See Our Environmental Impact &rarr;</a>
+    <!-- The Solution / Process Section -->
+    <section id="process" class="py-24 bg-brand-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-primary font-bold uppercase tracking-wider bg-brand-primary/10 px-4 py-1 rounded-full">The Method</span>
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-brand-dark mt-4">Effortless Reclamation</h2>
             </div>
-            <div class="order-1 md:order-2 rounded-xl overflow-hidden shadow-2xl">
-                <!-- Image for the problem -->
-                <img src="https://placehold.co/600x400/84a98c/fff?text=E-Waste+Landfill" alt="Large pile of discarded electronic waste in a landfill setting" class="w-full h-full object-cover">
-            </div>
-        </div>
-    </section>
 
-    <!-- 3. The Process Section (Slide 3 Content) -->
-    <section id="process" class="py-16 md:py-24 bg-background-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="slide-title mx-auto text-4xl font-bold border-b-4 border-primary-green/50 pb-3 mb-12 inline-block">The EcoReclaim Method</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold/30 to-transparent -translate-y-1/2 z-0"></div>
+
                 <!-- Step 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary-gold transition duration-300 hover:shadow-xl">
-                    <div class="text-5xl text-primary-green mb-4"><i class="fa-solid fa-microchip"></i></div>
-                    <h3 class="font-display text-3xl font-bold mb-3">1. Evaluate</h3>
-                    <p>We analyze the make, model, and condition of your gadget to provide an instant, fair market quote.</p>
+                <div class="relative z-10 group reveal">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:border-brand-primary transition duration-300 h-full text-center group-hover:-translate-y-2">
+                        <div class="w-20 h-20 mx-auto bg-brand-bg rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary transition duration-300">
+                            <i class="fa-solid fa-qrcode text-3xl text-brand-primary group-hover:text-white transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark mb-3">1. Smart Quote</h3>
+                        <p class="text-gray-500">Scan your device or enter the model. Our AI algorithm gives you an instant, guaranteed market offer.</p>
+                    </div>
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-brand-gold text-white rounded-full flex items-center justify-center font-bold border-4 border-brand-bg">1</div>
                 </div>
+
                 <!-- Step 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary-gold transition duration-300 hover:shadow-xl">
-                    <div class="text-5xl text-primary-green mb-4"><i class="fa-solid fa-truck-fast"></i></div>
-                    <h3 class="font-display text-3xl font-bold mb-3">2. Ship</h3>
-                    <p>Receive a free, prepaid shipping label. Simply pack your device securely and send it to our certified facility.</p>
+                <div class="relative z-10 group reveal" style="transition-delay: 200ms;">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:border-brand-primary transition duration-300 h-full text-center group-hover:-translate-y-2">
+                        <div class="w-20 h-20 mx-auto bg-brand-bg rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary transition duration-300">
+                            <i class="fa-solid fa-box-open text-3xl text-brand-primary group-hover:text-white transition"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark mb-3">2. Free Shipping</h3>
+                        <p class="text-gray-500">We send you a prepaid, eco-friendly shipping kit. Pack it up and schedule a free pickup from your door.</p>
+                    </div>
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-brand-gold text-white rounded-full flex items-center justify-center font-bold border-4 border-brand-bg">2</div>
                 </div>
+
                 <!-- Step 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary-gold transition duration-300 hover:shadow-xl">
-                    <div class="text-5xl text-primary-green mb-4"><i class="fa-solid fa-wallet"></i></div>
-                    <h3 class="font-display text-3xl font-bold mb-3">3. Get Paid</h3>
-                    <p>Once inspected, we process your payment immediately via bank transfer, PayPal, or check—your choice.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Solutions Section (Slide 4 Content) -->
-    <section id="solutions" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-center slide-title mx-auto text-4xl font-bold border-b-4 border-secondary-gold/50 pb-3 mb-12 inline-block">Our Responsible Solutions</h2>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <!-- Reselling Card -->
-                <div class="p-8 md:p-12 bg-primary-green/10 rounded-xl shadow-inner border-l-4 border-primary-green">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <i class="fa-solid fa-arrows-rotate text-5xl text-primary-green"></i>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold text-primary-green">Reselling & Refurbishment</h3>
-                    </div>
-                    <p class="text-xl font-semibold mb-3">Extending Product Lifecycles</p>
-                    <p>Functional devices are professionally data-wiped, carefully refurbished, and reintroduced to the market. This is the most eco-friendly option, significantly reducing the carbon footprint associated with new manufacturing.</p>
-                </div>
-                <!-- Recycling Card -->
-                <div class="p-8 md:p-12 bg-secondary-gold/10 rounded-xl shadow-inner border-l-4 border-secondary-gold">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <i class="fa-solid fa-recycle text-5xl text-secondary-gold"></i>
-                        <h3 class="font-display text-3xl md:text-4xl font-bold text-secondary-gold">Material Recycling</h3>
-                    </div>
-                    <p class="text-xl font-semibold mb-3">Resource Recovery</p>
-                    <p>Non-functional units are stripped for valuable components. We use advanced, safe processes to recover precious materials like gold, silver, and copper while ensuring hazardous components are safely neutralized and disposed of.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Impact Section (Slide 5 Content) -->
-    <section id="impact" class="py-16 md:py-24 bg-background-light">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-center slide-title mx-auto text-4xl font-bold border-b-4 border-primary-green/50 pb-3 mb-12 inline-block">Urban Mining: The Gold Standard</h2>
-
-            <div class="bg-white p-8 md:p-12 rounded-xl shadow-2xl border border-detail-gray">
-                <h3 class="text-2xl font-display font-semibold mb-8 text-center">Gold Concentration Comparison</h3>
-
-                <!-- Bar Chart -->
-                <div class="space-y-6">
-                    <!-- Bar 1 -->
-                    <div class="flex items-center">
-                        <div class="w-1/4 text-right pr-6 font-semibold text-lg text-text-dark">Primary Gold Ore</div>
-                        <div class="w-3/4 h-10 bg-detail-gray rounded-full overflow-hidden relative">
-                            <div class="h-full bg-secondary-gold/70 flex items-center justify-end pr-3 font-bold text-white shadow-inner" style="width: 15%;">
-                                5 g/ton
-                            </div>
+                <div class="relative z-10 group reveal" style="transition-delay: 400ms;">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:border-brand-primary transition duration-300 h-full text-center group-hover:-translate-y-2">
+                        <div class="w-20 h-20 mx-auto bg-brand-bg rounded-full flex items-center justify-center mb-6 group-hover:bg-brand-primary transition duration-300">
+                            <i class="fa-solid fa-hand-holding-dollar text-3xl text-brand-primary group-hover:text-white transition"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-brand-dark mb-3">3. Rapid Payment</h3>
+                        <p class="text-gray-500">Once inspected, funds are transferred within 24 hours via Crypto, PayPal, or Direct Bank Transfer.</p>
                     </div>
-                    <!-- Bar 2 -->
-                    <div class="flex items-center">
-                        <div class="w-1/4 text-right pr-6 font-semibold text-lg text-text-dark">E-Waste PCBs</div>
-                        <div class="w-3/4 h-10 bg-detail-gray rounded-full overflow-hidden relative">
-                            <div class="h-full bg-primary-green flex items-center justify-end pr-3 font-bold text-white shadow-inner" style="width: 85%;">
-                                200 g/ton
-                            </div>
+                    <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-brand-gold text-white rounded-full flex items-center justify-center font-bold border-4 border-brand-bg">3</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions / Services Parallax -->
+    <section id="solutions" class="py-24 bg-brand-dark relative bg-fixed bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1591955506264-3f5a6834570a?q=80&w=2070&auto=format&fit=crop');">
+        <div class="absolute inset-0 bg-brand-dark/90"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Circular Economy Solutions</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">We don't just scrap; we strategize. Every device follows the most sustainable path possible.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-2xl hover:bg-white/10 transition duration-300 reveal">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 bg-brand-light/20 p-4 rounded-lg text-brand-light">
+                            <i class="fa-solid fa-rotate text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Refurbish & Resell</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                The greenest device is the one that already exists. Our technicians repair functional units to extend lifecycle, reducing the carbon footprint of manufacturing by up to 80%.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <p class="text-center text-lg mt-10 italic text-primary-green/80">
-                    Fact: One ton of circuit boards contains 40 to 800 times more gold than one metric ton of mined ore. Urban mining is the future.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Vision / Quote Section (Slide 6 Content) -->
-    <section class="py-16 md:py-24 bg-primary-green/5">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <blockquote class="text-4xl md:text-5xl font-display italic text-text-dark relative">
-                <i class="fa-solid fa-quote-left text-secondary-gold/50 absolute -top-10 -left-10 text-8xl opacity-30 hidden sm:block"></i>
-                <p class="leading-snug">
-                    "We do not inherit the earth from our ancestors; we borrow it from our children."
-                </p>
-            </blockquote>
-            <cite class="block mt-8 text-xl font-sans font-semibold text-primary-green">&mdash; Native American Proverb</cite>
-        </div>
-    </section>
-
-    <!-- 7. CTA / Contact Section (Slide 7 & 8 Content) -->
-    <section id="contact" class="py-16 md:py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-lg uppercase text-secondary-gold font-bold mb-2 tracking-widest">Join the Revolution</h3>
-            <h2 class="font-display text-4xl md:text-5xl font-bold mb-8">A Greener Tomorrow, Together</h2>
-            <p class="mb-12 text-xl max-w-3xl mx-auto text-gray-600">
-                Every device you sell or recycle with EcoReclaim Tech contributes to a sustainable, circular economy. Partner with us to reduce carbon footprints and conserve natural resources.
-            </p>
-
-            <!-- Contact Card -->
-            <div class="inline-block bg-background-light p-8 md:p-12 rounded-xl shadow-2xl border-t-8 border-primary-green">
-                <h4 class="font-display text-3xl font-bold mb-6 text-primary-green">Ready to Reclaim?</h4>
-                <div class="space-y-4 text-left text-xl font-medium text-text-dark">
-                    <p><i class="fa-solid fa-globe w-6 text-primary-green"></i> <span class="ml-2">www.ecoreclaimtech.com</span></p>
-                    <p><i class="fa-solid fa-envelope w-6 text-primary-green"></i> <span class="ml-2">support@ecoreclaimtech.com</span></p>
-                    <p><i class="fa-solid fa-phone w-6 text-primary-green"></i> <span class="ml-2">+1 (555) 123-4567</span></p>
+                <!-- Card 2 -->
+                <div class="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-2xl hover:bg-white/10 transition duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 bg-brand-gold/20 p-4 rounded-lg text-brand-gold">
+                            <i class="fa-solid fa-microchip text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Urban Mining</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                For end-of-life devices, we extract precious metals (Gold, Silver, Palladium, Copper). We recover 99% of materials, returning them to the supply chain for new production.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-text-dark py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-300">
-            <p>&copy; 2025 EcoReclaim Tech. All Rights Reserved.</p>
-            <p class="text-sm mt-2">Sustainable Technology for a Circular Future.</p>
-        </div>
-    </footer>
+    <!-- Impact & Chart Section -->
+    <section id="impact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <div class="lg:w-1/2 reveal">
+                    <span class="text-brand-primary font-bold uppercase tracking-wider">The "Urban Mine"</span>
+                    <h2 class="text-4xl font-display font-bold text-brand-dark mt-2 mb-6">Why We Mine Circuits, Not Mountains.</h2>
+                    <p class="text-gray-600 text-lg mb-6">
+                        Traditional mining destroys landscapes and pollutes water. However, the concentration of gold in a typical circuit board is astronomically higher than in natural ore.
+                    </p>
+                    <div class="bg-brand-bg p-6 rounded-xl border-l-4 border-brand-gold">
+                        <p class="italic text-brand-dark font-medium">
+                            "One ton of iPhones yields 300 times more gold than a ton of gold ore."
+                        </p>
+                    </div>
+                </div>
 
+                <!-- Visualization Chart -->
+                <div class="lg:w-1/2 w-full reveal">
+                    <div class="bg-white shadow-2xl rounded-2xl p-8 border border-gray-100 relative overflow-hidden">
+                        <h3 class="text-xl font-bold text-brand-dark mb-8 flex items-center">
+                            <i class="fa-solid fa-scale-unbalanced text-brand-gold mr-3"></i> Yield Comparison (Gold per Ton)
+                        </h3>
+
+                        <!-- Traditional Mining Bar -->
+                        <div class="mb-8">
+                            <div class="flex justify-between text-sm font-semibold text-gray-500 mb-2">
+                                <span>Traditional Mining</span>
+                                <span>5g / ton</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-12 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 h-full bg-gray-400 rounded-full flex items-center px-4 text-white text-xs font-bold w-[5%] animate-pulse">
+                                    <i class="fa-solid fa-mountain mr-2"></i> Ore
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Urban Mining Bar -->
+                        <div>
+                            <div class="flex justify-between text-sm font-semibold text-gray-500 mb-2">
+                                <span class="text-brand-primary">EcoReclaim Process</span>
+                                <span class="text-brand-primary font-bold">200g+ / ton</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-12 relative overflow-hidden">
+                                <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-brand-light to-brand-primary rounded-full flex items-center px-4 text-white text-xs font-bold w-[95%] shadow-lg">
+                                    <i class="fa-solid fa-memory mr-2"></i> PCBs
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 text-xs text-center text-gray-400">
+                            *Data Source: Global E-waste Monitor 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <section id="contact" class="bg-brand-dark text-white pt-24 pb-12 relative overflow-hidden">
+        <!-- Abstract BG Elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="w-full h-full">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-brand-primary rounded-3xl p-8 md:p-16 shadow-2xl flex flex-col md:flex-row gap-12 mb-20 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">Ready to clear your clutter and save the planet?</h2>
+                    <p class="text-brand-bg text-lg mb-8">Get your instant quote today. Corporate bulk recycling inquiries are welcome.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-primary transition duration-300">
+                            <i class="fa-brands fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-primary transition duration-300">
+                            <i class="fa-brands fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center hover:bg-white hover:text-brand-primary transition duration-300">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Simple Form -->
+                <div class="md:w-1/2 w-full bg-white rounded-2xl p-8 text-gray-800">
+                    <form onsubmit="event.preventDefault(); alert('Thank you! This is a demo.');">
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-2">Device Type</label>
+                            <select class="w-full p-3 bg-gray-100 rounded-lg border-none focus:ring-2 focus:ring-brand-primary">
+                                <option>Smartphone</option>
+                                <option>Laptop</option>
+                                <option>Tablet</option>
+                                <option>Console</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" placeholder="you@example.com" class="w-full p-3 bg-gray-100 rounded-lg border-none focus:ring-2 focus:ring-brand-primary">
+                        </div>
+                        <button class="w-full py-4 bg-brand-gold text-white font-bold rounded-lg hover:bg-opacity-90 transition shadow-lg">
+                            Get Instant Offer
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fa-solid fa-leaf text-brand-light"></i>
+                    <span class="font-bold text-white">EcoReclaim Tech</span>
+                </div>
+                <div class="space-x-6">
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition">Sustainability Report</a>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    &copy; 2025 All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
