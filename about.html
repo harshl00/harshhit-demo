@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | EcoReclaim Tech</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1a2e28',   // Deep Forest
+                            primary: '#2d6a4f', // Emerald
+                            light: '#52b788',   // Fresh Leaf
+                            gold: '#d4a373',    // Earth Gold
+                            bg: '#f8f9fa',      // Off White
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Logo Animation */
+        .logo-spin:hover path {
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% {
+                stroke: #52b788;
+            }
+
+            50% {
+                stroke: #d4a373;
+            }
+
+            100% {
+                stroke: #52b788;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-brand-bg text-gray-800 antialiased selection:bg-brand-gold selection:text-white">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-lg">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <svg class="w-10 h-10 logo-spin transition-transform transform group-hover:scale-110"
+                        viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 C28 10 10 28 10 50 C10 72 28 90 50 90 C72 90 90 72 90 50" stroke="#2d6a4f"
+                            stroke-width="6" stroke-linecap="round" stroke-dasharray="150 200"
+                            transform="rotate(-45 50 50)" />
+                        <path d="M50 25 C50 25 70 30 75 50 C80 70 50 85 50 85 C50 85 20 70 25 50 C30 30 50 25 50 25 Z"
+                            fill="#52b788" />
+                        <path d="M50 85 L50 60" stroke="#fff" stroke-width="2" />
+                        <path d="M50 60 L60 50" stroke="#fff" stroke-width="2" />
+                        <circle cx="85" cy="25" r="5" fill="#d4a373" />
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-display font-bold text-brand-dark leading-none">EcoReclaim</span>
+                        <span class="text-xs font-body tracking-widest text-brand-gold font-semibold">TECH</span>
+                    </div>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">Home</a>
+                    <a href="about.html" class="text-sm font-bold text-brand-primary transition">About Us</a>
+                    <a href="services.html"
+                        class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">Services</a>
+                    <a href="blog.html"
+                        class="text-sm font-semibold text-gray-600 hover:text-brand-primary transition">Blog</a>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="index.html#contact"
+                        class="px-6 py-2 bg-brand-dark text-white rounded-full text-sm font-bold hover:bg-brand-primary transition duration-300 shadow-lg">
+                        Get Quote
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-brand-dark focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full px-4">
+            <div class="glass rounded-xl p-4 flex flex-col space-y-4 shadow-2xl">
+                <a href="index.html" class="text-lg font-semibold text-gray-700">Home</a>
+                <a href="about.html" class="text-lg font-bold text-brand-primary">About Us</a>
+                <a href="services.html" class="text-lg font-semibold text-gray-700">Services</a>
+                <a href="blog.html" class="text-lg font-semibold text-gray-700">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2070&auto=format&fit=crop"
+                alt="Green Office" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-brand-dark/80"></div>
+        </div>
+        <div class="relative z-10 text-center px-4 reveal active">
+            <span class="text-brand-gold font-bold uppercase tracking-widest mb-4 block">Our Story</span>
+            <h1 class="text-5xl md:text-7xl font-display font-extrabold text-white mb-6">Pioneering the <br /><span
+                    class="text-brand-light">Circular Future</span></h1>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto">We are a team of engineers, environmentalists, and
+                innovators dedicated to solving the world's e-waste crisis.</p>
+        </div>
+    </header>
+
+    <!-- Mission & Vision -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=2070&auto=format&fit=crop"
+                        alt="Vision" class="rounded-2xl shadow-2xl">
+                </div>
+                <div class="reveal">
+                    <h2 class="text-4xl font-display font-bold text-brand-dark mb-6">Our Mission</h2>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        To eliminate electronic waste from landfills by 2030 through innovative recovery technologies
+                        and a seamless, user-centric recycling ecosystem.
+                    </p>
+                    <h2 class="text-4xl font-display font-bold text-brand-dark mb-6">Our Vision</h2>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        A world where technology and nature coexist in harmony, where every device is a resource for the
+                        next, and where "waste" is a concept of the past.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-4 bg-brand-bg rounded-xl border-l-4 border-brand-primary">
+                            <h4 class="font-bold text-brand-dark text-xl">Integrity</h4>
+                            <p class="text-sm text-gray-500">Transparent processes.</p>
+                        </div>
+                        <div class="p-4 bg-brand-bg rounded-xl border-l-4 border-brand-gold">
+                            <h4 class="font-bold text-brand-dark text-xl">Innovation</h4>
+                            <p class="text-sm text-gray-500">Tech-driven solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-24 bg-brand-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-display font-bold text-brand-dark">Meet The Team</h2>
+                <p class="text-gray-500 mt-4">The minds behind the movement.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Member 1 -->
+                <div
+                    class="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 reveal">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-brand-dark">James Chen</h3>
+                        <p class="text-brand-primary font-medium text-sm mb-4">CEO & Founder</p>
+                        <p class="text-gray-500 text-sm">Former environmental engineer with a passion for sustainable
+                            tech.</p>
+                    </div>
+                </div>
+                <!-- Member 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 reveal"
+                    style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-brand-dark">Sarah Johnson</h3>
+                        <p class="text-brand-primary font-medium text-sm mb-4">Head of Operations</p>
+                        <p class="text-gray-500 text-sm">Logistics expert ensuring zero-waste supply chains.</p>
+                    </div>
+                </div>
+                <!-- Member 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 reveal"
+                    style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-brand-dark">David Okonjo</h3>
+                        <p class="text-brand-primary font-medium text-sm mb-4">Chief Technology Officer</p>
+                        <p class="text-gray-500 text-sm">AI specialist developing our proprietary sorting algorithms.
+                        </p>
+                    </div>
+                </div>
+                <!-- Member 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition duration-300 reveal"
+                    style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop"
+                        class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-brand-dark">Emily Davis</h3>
+                        <p class="text-brand-primary font-medium text-sm mb-4">Sustainability Lead</p>
+                        <p class="text-gray-500 text-sm">Ensuring every step of our process meets global eco-standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index) -->
+    <footer class="bg-brand-dark text-white py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-400">&copy; 2025 EcoReclaim Tech. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
